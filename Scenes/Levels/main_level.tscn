@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://w0ea2th1agsa"]
+
+[ext_resource type="Texture2D" uid="uid://b4f0cowe30jht" path="res://Scenes/Levels/Assets/rock_face_03_diff_4k.jpg" id="1_s08vq"]
+[ext_resource type="PackedScene" uid="uid://dk2igw3q1ri1g" path="res://Scenes/Player/player.tscn" id="2_o3eya"]
+[ext_resource type="Texture2D" uid="uid://bd7x7u8llvo0l" path="res://Scenes/Levels/Assets/rock_wall_15_diff_4k.jpg" id="2_tgb3g"]
+[ext_resource type="Texture2D" uid="uid://laxelrmlre3t" path="res://Scenes/Levels/Assets/StoneBricksSplitface001_COL_2K.jpg" id="3_vl75t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o3eya"]
+sky_top_color = Color(0.13190177, 0.5072962, 0.52278674, 1)
+sky_horizon_color = Color(0.5842563, 0.6703549, 0.66522753, 1)
+ground_horizon_color = Color(0.5842563, 0.6703549, 0.66522753, 1)
+
+[sub_resource type="Sky" id="Sky_tgb3g"]
+sky_material = SubResource("ProceduralSkyMaterial_o3eya")
+
+[sub_resource type="Environment" id="Environment_vl75t"]
+background_mode = 2
+sky = SubResource("Sky_tgb3g")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_soxo8"]
+albedo_texture = ExtResource("1_s08vq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmlj4"]
+albedo_texture = ExtResource("3_vl75t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vl75t"]
+albedo_texture = ExtResource("2_tgb3g")
+
+[node name="Main Level" type="Node3D" unique_id=305530262]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=348532223]
+environment = SubResource("Environment_vl75t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=40819732]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.194
+light_indirect_energy = 0.309
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=487337377]
+
+[node name="LevelContents" type="Node3D" parent="NavigationRegion3D" unique_id=10419308]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D/LevelContents" unique_id=628687039]
+use_collision = true
+
+[node name="Room1" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/CSGCombiner3D" unique_id=471751315]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 5, 0, 1.5, 0)
+flip_faces = true
+material = SubResource("StandardMaterial3D_soxo8")
+
+[node name="Room2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/CSGCombiner3D" unique_id=715118863]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 5, -7.889875, 1.5, 0)
+flip_faces = true
+material = SubResource("StandardMaterial3D_soxo8")
+
+[node name="Room5" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/CSGCombiner3D" unique_id=564185441]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 5, 1.5631471, 1.5, -15.233452)
+flip_faces = true
+material = SubResource("StandardMaterial3D_soxo8")
+
+[node name="Room3" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/CSGCombiner3D" unique_id=1816541989]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 9, 0, 2, -7.674553)
+flip_faces = true
+material = SubResource("StandardMaterial3D_hmlj4")
+
+[node name="Room4" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/CSGCombiner3D" unique_id=836991089]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 9, -4.690073, 2, -9.440605)
+flip_faces = true
+size = Vector3(1, 1, 0.60754395)
+material = SubResource("StandardMaterial3D_hmlj4")
+
+[node name="Hallway1" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/CSGCombiner3D" unique_id=631893589]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 2, -3.9284906, 1.3375854, 0)
+flip_faces = true
+size = Vector3(1, 0.89172363, 1)
+material = SubResource("StandardMaterial3D_vl75t")
+
+[node name="Hallway3" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/CSGCombiner3D" unique_id=1963467686]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 2, -2.394084, 1.3375854, -9.14583)
+flip_faces = true
+size = Vector3(1, 0.89172363, 1)
+material = SubResource("StandardMaterial3D_vl75t")
+
+[node name="Hallway2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/CSGCombiner3D" unique_id=1627417693]
+transform = Transform3D(-4.3711385e-08, 0, -1.9999999, 0, 3, 0, 0.99999994, 0, -8.742277e-08, -0.03427124, 1.3375854, -2.8072104)
+flip_faces = true
+size = Vector3(1, 0.89172363, 1)
+material = SubResource("StandardMaterial3D_vl75t")
+
+[node name="Hallway4" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/CSGCombiner3D" unique_id=46691545]
+transform = Transform3D(-4.3711385e-08, 0, -1.9999999, 0, 3, 0, 0.99999994, 0, -8.742277e-08, -0.03427124, 1.3375854, -12.50581)
+flip_faces = true
+size = Vector3(1, 0.89172363, 1)
+material = SubResource("StandardMaterial3D_vl75t")
+
+[node name="Player" parent="." unique_id=197454970 instance=ExtResource("2_o3eya")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 1, 0)

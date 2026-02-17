@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cg7cvvjulfu0e" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Script" uid="uid://c4gbr0qw5x3ak" path="res://Scenes/Player/smooth_camera.gd" id="2_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://c0ck3ek5gmmkd" path="res://Scenes/Player/Assets/damage.png" id="3_xpcdj"]
+[ext_resource type="AudioStream" uid="uid://n8bl3lb6bme0" path="res://Scenes/Player/Assets/Heartbeat.wav" id="4_mtuoh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -19,7 +20,7 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.11530013, 0.1810212, 0.2917093, 0.39317343),
+"times": PackedFloat32Array(0, 0.0258, 0.0942, 0.1628, 0.39317343),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(2, 2), Vector2(1.5, 1.5), Vector2(2, 2), Vector2(1.3, 1.3), Vector2(2, 2)]
@@ -35,6 +36,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_mtuoh"]
@@ -63,6 +76,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_htcer"]
 _data = {
@@ -80,6 +105,7 @@ mesh = SubResource("CapsuleMesh_tugb3")
 shape = SubResource("CapsuleShape3D_uvnfx")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=2115476240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35385203, 0)
 
 [node name="SmoothCamera" type="Camera3D" parent="CameraPivot" unique_id=1005629898]
 script = ExtResource("2_xpcdj")
@@ -94,9 +120,12 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2017492743]
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(1920, 1024)
+render_target_update_mode = 4
 
 [node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1253178447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3712188, 0)
 cull_mask = 2
 
 [node name="DamageTexture" type="TextureRect" parent="." unique_id=168813742]
@@ -112,3 +141,7 @@ texture = ExtResource("3_xpcdj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DamageTexture" unique_id=1329634920]
 libraries/ = SubResource("AnimationLibrary_htcer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=193934172]
+stream = ExtResource("4_mtuoh")
+bus = &"HeartBeat"
