@@ -1,0 +1,10 @@
+[gd_resource type="VisualShader" format=3 uid="uid://cpap8lf3igs05"]
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_guuid"]
+default_input_values = [2, false, 3, 2.0]
+
+[resource]
+nodes/fragment/0/position = Vector2(560, 100)
+nodes/fragment/2/node = SubResource("VisualShaderNodeFresnel_guuid")
+nodes/fragment/2/position = Vector2(60, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 0, 1, 2, 0, 0, 5)

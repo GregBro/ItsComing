@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://c78xy1d3upqt4"]
+
+[ext_resource type="Material" uid="uid://bnskqodctel6o" path="res://Materials/RoomWallMaterial.tres" id="1_k0okc"]
+[ext_resource type="PackedScene" uid="uid://7e3syun2gv8n" path="res://Entities/Player/player.tscn" id="2_k0okc"]
+[ext_resource type="PackedScene" uid="uid://cdmn3smkn0h53" path="res://Levels/jewel.tscn" id="3_6x3q2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uh7hs"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7uyrv"]
+sky_material = SubResource("ProceduralSkyMaterial_uh7hs")
+
+[sub_resource type="Environment" id="Environment_oft18"]
+background_mode = 2
+sky = SubResource("Sky_7uyrv")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="MainLevel" type="Node3D" unique_id=1279421938]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=132874611]
+environment = SubResource("Environment_oft18")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1658911824]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 6.9805593, -10.968012)
+light_energy = 0.435
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=548460317]
+use_collision = true
+
+[node name="Room1" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1577163744]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 6, 0, 1.5, 0)
+flip_faces = true
+material = ExtResource("1_k0okc")
+
+[node name="Room2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=622795654]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 4, 7.075102, 1.5, 0)
+flip_faces = true
+material = ExtResource("1_k0okc")
+
+[node name="Room3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1806632276]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 4, 7.075102, 1.5, -5.187561)
+flip_faces = true
+material = ExtResource("1_k0okc")
+
+[node name="Room4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1167212701]
+transform = Transform3D(11, 0, 0, 0, 5, 0, 0, 0, 10, 1.1648407, 2.5, -13.223732)
+flip_faces = true
+size = Vector3(1.3984375, 1, 1)
+material = ExtResource("1_k0okc")
+
+[node name="Room5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1932926427]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 4, -7.162201, 1.5, -2.398374)
+flip_faces = true
+size = Vector3(1, 1, 2.2172852)
+material = ExtResource("1_k0okc")
+
+[node name="Hallway1" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2114713709]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, 3.0403557, 1.25, 0)
+flip_faces = true
+size = Vector3(0.69506836, 1, 1)
+material = ExtResource("1_k0okc")
+
+[node name="Hallway4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=933432307]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -3.0369549, 1.25, 0)
+flip_faces = true
+size = Vector3(0.69506836, 1, 1)
+material = ExtResource("1_k0okc")
+
+[node name="Hallway2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1756545065]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, 7.099, 1.25, -2.5883467)
+flip_faces = true
+size = Vector3(1, 1, 0.7696533)
+material = ExtResource("1_k0okc")
+
+[node name="Hallway3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=857705364]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, 7.099, 1.25, -7.751087)
+flip_faces = true
+size = Vector3(1, 1, 0.7696533)
+material = ExtResource("1_k0okc")
+
+[node name="Hallway5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=614826257]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -5.26048, 1.25, -7.5120916)
+flip_faces = true
+size = Vector3(1, 1, 0.7696533)
+material = ExtResource("1_k0okc")
+
+[node name="Player" parent="." unique_id=355843200 instance=ExtResource("2_k0okc")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, 0)
+visible = false
+
+[node name="Jewel" parent="." unique_id=2068968265 instance=ExtResource("3_6x3q2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3688507, 2.0198348, -16.069117)
