@@ -10,6 +10,7 @@ func _on_new_game_button_pressed() -> void:
 	self.visible = false
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	
 
 func _on_exit_game_button_pressed() -> void:
 	get_tree().quit()

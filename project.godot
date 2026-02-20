@@ -24,6 +24,10 @@ Globals="*uid://b2jw3efycir3p"
 
 enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
+[global_group]
+
+Navigable=""
+
 [input]
 
 move_forward={

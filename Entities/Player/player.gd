@@ -13,6 +13,7 @@ extends CharacterBody3D
 @onready var animation_player: AnimationPlayer = $DamageTexture/AnimationPlayer
 
 @onready var game_over_menu: Control = $GameOverMenu
+@onready var timer: Timer = $Timer
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var mouse_motion := Vector2.ZERO
@@ -32,6 +33,7 @@ func player_wins() -> void :
 func _ready() -> void:
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 func _process(delta: float) -> void:
 		smooth_camera.fov = lerp(smooth_camera.fov, smooth_camera_fov, delta * 30.0)
@@ -80,7 +82,7 @@ func handle_camera_rotation() -> void:
 
 func _on_timer_timeout() -> void:
 	animation_player.play("Heartbeat")
-
-
-func _on_lava_1_body_entered(body: Node3D) -> void:
-	pass # Replace with function body.
+	var enemy = get_tree().get_first_node_in_group("enemy")
+	var distance = global_position.distance_to(enemy.global_position)
+	print(distance)
+	timer.wait_time = distance / 5.0
