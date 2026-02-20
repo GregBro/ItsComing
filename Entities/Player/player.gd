@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-@export var speed := 8.0
+@export var speed := 5.0
 @export var jump_height: float = 1.0
 @export var fall_multiplier: float = 2.5
 @export var max_hitpoints := 100
@@ -11,10 +11,13 @@ extends CharacterBody3D
 
 @onready var smooth_camera_fov := smooth_camera.fov
 
+@onready var animation_player: AnimationPlayer = $DamageTexture/AnimationPlayer
+
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var mouse_motion := Vector2.ZERO
 
 func _ready() -> void:
+	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _process(delta: float) -> void:
@@ -42,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-
+		
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -59,3 +62,6 @@ func handle_camera_rotation() -> void:
 		camera_pivot.rotation_degrees.x, -90.0, 90.0
 	)
 	mouse_motion = Vector2.ZERO
+
+func _on_timer_timeout() -> void:
+	animation_player.play("Heartbeat")

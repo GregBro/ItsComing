@@ -1,10 +1,100 @@
 [gd_scene format=3 uid="uid://7e3syun2gv8n"]
 
 [ext_resource type="Script" uid="uid://nb0xoxl26qg3" path="res://Entities/Player/player.gd" id="1_mv1ah"]
+[ext_resource type="AudioStream" uid="uid://yn71mvhkwgwj" path="res://Entities/Player/Assets/Heartbeat.wav" id="2_3uyv8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ix6vc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mv1ah"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mv1ah"]
+load_path = "res://.godot/imported/damage.png-05af4cc1b363eb5861c00fe1a3775072.ctex"
+
+[sub_resource type="Animation" id="Animation_3uyv8"]
+resource_name = "Heartbeat"
+length = 0.5
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0282, 0.06666666, 0.13333336, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.39, 1.39), Vector2(1.57, 1.57), Vector2(1.41, 1.41), Vector2(2.075, 2.075)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666666, 0.13333336, 0.49404934),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.7607843), Color(1, 1, 1, 0.37254903), Color(1, 1, 1, 0.6627451), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lu8i8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.3, 2.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tekja"]
+_data = {
+&"Heartbeat": SubResource("Animation_3uyv8"),
+&"RESET": SubResource("Animation_lu8i8")
+}
 
 [node name="Player" type="CharacterBody3D" unique_id=355843200]
 script = ExtResource("1_mv1ah")
@@ -19,3 +109,23 @@ shape = SubResource("CapsuleShape3D_mv1ah")
 
 [node name="SmoothCamera" type="Camera3D" parent="CameraPivot" unique_id=274403484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74460495, -0.090804935)
+
+[node name="DamageTexture" type="TextureRect" parent="." unique_id=1170988437]
+modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.3, 2.3)
+pivot_offset = Vector2(576, 324)
+texture = SubResource("CompressedTexture2D_mv1ah")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageTexture" unique_id=776756373]
+libraries/ = SubResource("AnimationLibrary_tekja")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DamageTexture" unique_id=1487430161]
+stream = ExtResource("2_3uyv8")
+
+[node name="Timer" type="Timer" parent="." unique_id=956634395]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
