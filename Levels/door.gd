@@ -9,6 +9,7 @@ extends Node3D
 
 
 var is_active :bool = false
+var player
 
 func _ready() -> void:
 	MsgQueue.connect("open_all_doors", open_door)
@@ -35,6 +36,9 @@ func _input(event: InputEvent) -> void:
 			open_door()
 		if event.is_action_pressed("close_door"):
 			close_door()
+		if event.is_action_pressed("teleport"):
+			player = get_tree().get_first_node_in_group("player")
+			player.position = Globals.get_random_position()
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

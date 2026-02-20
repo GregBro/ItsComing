@@ -18,6 +18,7 @@ var aggro_range := 50.0
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	animation_player.play("Idle")
+	
 
 func _process(_delta: float) -> void:
 	if provoked:
@@ -32,9 +33,9 @@ func _physics_process(delta: float) -> void:
 	var direction = global_position.direction_to(next_position)
 	var distance = global_position.distance_to(player.global_position)
 	
-	if distance <= aggro_range:
-		provoked = true
-		
+	#if distance <= aggro_range:
+		#provoked = true
+		#
 	if provoked:
 		if distance <= attack_range:
 			attack()

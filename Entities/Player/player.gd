@@ -67,6 +67,8 @@ func _input(event: InputEvent) -> void:
 			mouse_motion = -event.relative * 0.001
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if event.is_action_pressed("enter"):
+		print(position)
 		
 func handle_camera_rotation() -> void:
 	rotate_y(mouse_motion.x)
@@ -78,3 +80,7 @@ func handle_camera_rotation() -> void:
 
 func _on_timer_timeout() -> void:
 	animation_player.play("Heartbeat")
+
+
+func _on_lava_1_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
