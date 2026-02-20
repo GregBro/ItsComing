@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dawan03erm5b4"]
+
+[ext_resource type="Script" uid="uid://q7nwbqxuvgxb" path="res://Entities/Player/game_over_menu.gd" id="1_c1e1b"]
+
+[node name="GameOverMenu" type="Control" unique_id=1202885925]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c1e1b")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1206273802]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_right = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1727754408]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+
+[node name="YouWinLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=559744061]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "You Win!"
+horizontal_alignment = 1
+
+[node name="YouLoseLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1555454540]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "The Monster Caught You !"
+horizontal_alignment = 1
+
+[node name="NewGameButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1930592619]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "New Game"
+
+[node name="ExitGameButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2119062992]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Exit Game"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

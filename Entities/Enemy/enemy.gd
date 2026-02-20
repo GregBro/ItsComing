@@ -1,18 +1,18 @@
 extends CharacterBody3D
 class_name Enemy
 
-const SPEED = 5.2
+const SPEED = 3.5
 
 @export var max_hitpoints := 100
 @export var attack_range := 1.5
-@export var attack_damage := 20
+@export var attack_damage := 100
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var player
-var provoked := true
+var provoked := false
 var aggro_range := 50.0
 
 func _ready() -> void:
@@ -35,9 +35,9 @@ func _physics_process(delta: float) -> void:
 	if distance <= aggro_range:
 		provoked = true
 		
-	#if provoked:
-		#if distance <= attack_range:
-			#playback.travel("Attack")
+	if provoked:
+		if distance <= attack_range:
+			attack()
 	
 	if direction:
 		look_at_target(direction)
@@ -47,8 +47,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-
-	move_and_slide()
+	if provoked:
+		move_and_slide()
 
 func look_at_target(direction: Vector3) -> void:
 	var adjusted_direction = direction

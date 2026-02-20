@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bbmcfrrpcd7h2" path="res://Levels/door.gd" id="1_c5cab"]
 [ext_resource type="PackedScene" uid="uid://c2ff50138qxb4" path="res://Levels/Meshes/Door.glb" id="1_ne8h8"]
+[ext_resource type="Texture2D" uid="uid://b8ynjoasnakq" path="res://Levels/Assets/DoorText.png" id="3_obau8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5cab"]
-size = Vector3(1, 1.263794, 1.3798828)
+size = Vector3(1.9199219, 1.263794, 3.1877441)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_obau8"]
 size = Vector3(1, 1.283905, 0.12524414)
@@ -15,16 +16,17 @@ script = ExtResource("1_c5cab")
 [node name="Area3D" type="Area3D" parent="." unique_id=273223259]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=619246179]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61489487, 0.027832031)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016601563, 0.61489487, 0.0064697266)
 shape = SubResource("BoxShape3D_c5cab")
 
 [node name="OpenPosition" type="Node3D" parent="." unique_id=1272082002]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5417628, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3324375, 0, 0)
 
 [node name="ClosedPosition" type="Node3D" parent="." unique_id=1221058889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00347054, 0, 0)
 
-[node name="DoorBody" type="RigidBody3D" parent="." unique_id=1185758719]
+[node name="DoorBody" type="StaticBody3D" parent="." unique_id=858176103]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBody" unique_id=964190115]
@@ -33,6 +35,16 @@ shape = SubResource("BoxShape3D_obau8")
 
 [node name="DoorMesh" parent="DoorBody" unique_id=593651461 instance=ExtResource("1_ne8h8")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.2, -0.0050907135, 0.62098026, 0)
+
+[node name="DoorText1" type="Sprite3D" parent="DoorBody" unique_id=243444132]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.8586025, 0.11954197)
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_obau8")
+
+[node name="DoorText2" type="Sprite3D" parent="DoorBody" unique_id=948292159]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, 0.8586025, -0.112847626)
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_obau8")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

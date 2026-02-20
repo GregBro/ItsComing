@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cdmn3smkn0h53"]
 
-[ext_resource type="Shader" uid="uid://wagfy5u7cccr" path="res://Levels/jewel.tres" id="1_1xike"]
-[ext_resource type="Script" uid="uid://vaysi3lcuy7g" path="res://Levels/jewel.gd" id="1_qj5bm"]
-[ext_resource type="Shader" uid="uid://cpap8lf3igs05" path="res://Levels/Fresne..tres" id="2_4hcvv"]
+[ext_resource type="Shader" uid="uid://wagfy5u7cccr" path="res://Entities/Jewel/jewel.tres" id="1_1xike"]
+[ext_resource type="Script" uid="uid://vaysi3lcuy7g" path="res://Entities/Jewel/jewel.gd" id="1_qj5bm"]
+[ext_resource type="Shader" uid="uid://cpap8lf3igs05" path="res://Entities/Jewel/Fresne..tres" id="2_4hcvv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4hcvv"]
 render_priority = 0
@@ -84,3 +84,5 @@ mesh = SubResource("BoxMesh_1xike")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_qj5bm")
 mesh = SubResource("SphereMesh_c7amn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
