@@ -9,6 +9,7 @@ const SPEED = 5.2
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var player
 var provoked := true
@@ -16,6 +17,7 @@ var aggro_range := 50.0
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	animation_player.play("Idle")
 
 func _process(_delta: float) -> void:
 	if provoked:

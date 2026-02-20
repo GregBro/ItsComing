@@ -1,18 +1,87 @@
 [gd_scene format=3 uid="uid://c6ekkmdgjhq2g"]
 
 [ext_resource type="Script" uid="uid://bd0cw1yduetus" path="res://Entities/Enemy/enemy.gd" id="1_m2t2i"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_s42wg"]
+[ext_resource type="PackedScene" uid="uid://d3obusyc85u36" path="res://Entities/Enemy/spring_1.tscn" id="2_t7hpb"]
+[ext_resource type="PackedScene" uid="uid://dm0egt8ywcpby" path="res://Entities/Enemy/spring_2.tscn" id="3_salu8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m2t2i"]
 
+[sub_resource type="Animation" id="Animation_7s3rp"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spring1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3.1415927, 0), Vector3(0, -6.2831855, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spring2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9667, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bgbm4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spring1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spring2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3l5gm"]
+_data = {
+&"Idle": SubResource("Animation_7s3rp"),
+&"RESET": SubResource("Animation_bgbm4")
+}
+
 [node name="Enemy" type="CharacterBody3D" unique_id=1483442833]
 script = ExtResource("1_m2t2i")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=897369673]
-mesh = SubResource("CapsuleMesh_s42wg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1569352195]
 shape = SubResource("CapsuleShape3D_m2t2i")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=136574830]
+
+[node name="Spring1" parent="." unique_id=1876688040 instance=ExtResource("2_t7hpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Spring2" parent="." unique_id=1109960841 instance=ExtResource("3_salu8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.3, 0, -1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2012969069]
+libraries/ = SubResource("AnimationLibrary_3l5gm")

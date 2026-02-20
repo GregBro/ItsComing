@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d3obusyc85u36"]
+
+[ext_resource type="PackedScene" uid="uid://cbsbnx3rgg56b" path="res://Entities/Enemy/Spring1.glb" id="1_b4iij"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_said8"]
+albedo_color = Color(0.9529412, 0.08627451, 0.03137255, 1)
+metallic = 0.82
+metallic_specular = 0.68
+emission_enabled = true
+emission_energy_multiplier = 4.63
+
+[node name="Spring1" unique_id=1876688040 instance=ExtResource("1_b4iij")]
+
+[node name="Circle" parent="." index="0" unique_id=840149894]
+transform = Transform3D(0.076496534, 0, 0, 0, -3.3437697e-09, -0.076496534, 0, 0.076496534, -3.3437697e-09, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_said8")
