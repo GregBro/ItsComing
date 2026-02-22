@@ -84,5 +84,5 @@ func _on_timer_timeout() -> void:
 	animation_player.play("Heartbeat")
 	var enemy = get_tree().get_first_node_in_group("enemy")
 	var distance = global_position.distance_to(enemy.global_position)
-	print(distance)
+	#print(distance)
 	timer.wait_time = distance / 5.0

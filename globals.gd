@@ -12,6 +12,7 @@ func get_random_position() -> Vector3 :
 	var index = randi_range(0,size-1)
 	var data_set = location_dictionary[index].PlayerLocation
 	var  new_position :Vector3  =  Vector3(data_set[0], data_set[1],data_set[2])
+	#TODO Make sure that we don't spawn in the same location as the jewel
 	#print(new_position)
 	return new_position
 

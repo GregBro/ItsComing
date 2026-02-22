@@ -67,7 +67,6 @@ autoplay = true
 
 [node name="Player" parent="." unique_id=355843200 instance=ExtResource("2_k0okc")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, 0)
-visible = false
 
 [node name="Enemy" parent="." unique_id=1483442833 instance=ExtResource("4_13urm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.438, 1, -11.537)
@@ -317,7 +316,7 @@ material = ExtResource("1_k0okc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.29776, 0, -15.050346)
 
 [node name="Door2" parent="NavigationRegion3D/LevelContents/Doors" unique_id=827001383 instance=ExtResource("5_6opdx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.118065, 0, -6.7123823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2697897, 0, -6.7123823)
 
 [node name="Door3" parent="NavigationRegion3D/LevelContents/Doors" unique_id=1178313364 instance=ExtResource("5_6opdx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.102229, 0, -2.4694767)
@@ -344,10 +343,10 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.6
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.676669, 4.0300407, -16.939514)
 
 [node name="Door6" parent="NavigationRegion3D/LevelContents/Doors" unique_id=1108390266 instance=ExtResource("5_6opdx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.053537, 0, -26.145283)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.987976, 0, -26.145283)
 
 [node name="Door7" parent="NavigationRegion3D/LevelContents/Doors" unique_id=699598327 instance=ExtResource("5_6opdx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.053537, 0, -35.337456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.993465, 0, -35.337456)
 
 [node name="Door8" parent="NavigationRegion3D/LevelContents/Doors" unique_id=1771592331 instance=ExtResource("5_6opdx")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.266427, 0, -41.39734)
@@ -367,13 +366,13 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.92
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5, 0.030745506, 0.5641663, -12.729341)
 material_override = ExtResource("1_k0okc")
 use_collision = true
-polygon = PackedVector2Array(-4.394175, -0.69127226, -4.267038, 3.5410697, 2.1182208, -0.5807127)
+polygon = PackedVector2Array(-4.243704, -0.67702407, -4.262416, 3.560706, 2.1182208, -0.5807127)
 
 [node name="Slope2" type="CSGPolygon3D" parent="NavigationRegion3D/LevelContents/Slopes" unique_id=410627709 groups=["Navigable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5, -0.32305908, 0.6009557, -25.357504)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5, -0.40091372, 0.5722828, -25.31983)
 material_override = ExtResource("1_k0okc")
 use_collision = true
-polygon = PackedVector2Array(-4.546979, 0.46807504, -4.1449223, 3.519777, 4.163129, -0.8270695)
+polygon = PackedVector2Array(-4.678385, -0.71965265, -4.1059966, 3.5510159, 3.4381416, -0.64082503)
 
 [node name="LavaPools" type="Node3D" parent="NavigationRegion3D/LevelContents" unique_id=891760730]
 
